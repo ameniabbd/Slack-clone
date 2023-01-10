@@ -1,17 +1,26 @@
 import React from "react";
+import styled from "styled-components";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Header from "./components/Header";
+import Sidebar from "./components/Sidebar";
+import Chat from "./components/Chat";
 
 function App() {
   return (
     <div className="App">
       <Router>
         <>
-          <Switch>
-            <Route exact path="/">
-              <h1>This is the homepage</h1>
-            </Route>
-          </Switch>
+          <Header />
+          <AppBody>
+            <Sidebar/>
+            <Switch>
+              <Route exact path="/">
+                {/** Chat */}
+                <Chat/>
+              </Route>
+            </Switch>
+          </AppBody>
         </>
       </Router>
     </div>
@@ -19,3 +28,8 @@ function App() {
 }
 
 export default App;
+const AppBody=styled.div`
+display: flex;
+height: 100vh;
+
+`;
